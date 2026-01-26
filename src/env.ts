@@ -2,8 +2,10 @@ import { z } from "zod";
 import "dotenv/config";
 
 export const envSchema = z.object({
-  DATABASE_URL: z.string().url(),
+  DATABASE_URL: z.url(),
   PORT: z.coerce.number().default(3333),
+  JWT_PRIVATE_KEY: z.string(),
+  JWT_PUBLIC_KEY: z.string(),
 });
 
 export type Env = z.infer<typeof envSchema>;
