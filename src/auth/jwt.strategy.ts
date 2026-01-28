@@ -9,7 +9,7 @@ const tokenSchema = z.object({
   sub: z.cuid()
 });
 
-type TokenSchema = z.infer<typeof tokenSchema>;
+export type TokenSchema = z.infer<typeof tokenSchema>;
 
 @Injectable() // pois é um provider
 export class JwtStrategy extends PassportStrategy(Strategy) {
