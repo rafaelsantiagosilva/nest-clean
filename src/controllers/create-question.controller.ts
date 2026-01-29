@@ -28,10 +28,6 @@ export class CreateQuestionController {
     const { title, content } = body;
     const userId = user.sub;
 
-    console.log("> Create Question Controller: ");
-    console.log(userId);
-    console.log(body);
-
     await this.prisma.question.create({
       data: {
         title,
