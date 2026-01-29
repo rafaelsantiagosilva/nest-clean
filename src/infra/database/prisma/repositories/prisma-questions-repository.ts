@@ -3,11 +3,22 @@ import { QuestionsRepository } from "@/domain/forum/application/repositories/que
 import { Question } from "@/domain/forum/enterprise/entities/question";
 import { Slug } from "@/domain/forum/enterprise/entities/value-objects/slug";
 import { Injectable } from "@nestjs/common";
+import { PrismaService } from "../prisma.service";
+import { PrismaQuestionMapper } from "../mappers/PrismaQuestionMapper";
 
 @Injectable()
 export class PrismaQuestionsRepository implements QuestionsRepository {
+  constructor(private prisma: PrismaService) { }
+
   async findById(id: string): Promise<Question | null> {
-    throw new Error("Method not implemented.");
+    const question = await this.prisma.question.findUnique({
+      where: { id }
+    });
+
+    if (!question)
+      return null;
+
+    return PrismaQuestionMapper.toDomain(question);
   }
 
   async findBySlug(slug: Slug): Promise<Question | null> {
