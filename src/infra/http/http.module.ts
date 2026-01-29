@@ -1,4 +1,4 @@
-import { DatabaseModule } from "@faker-js/faker/.";
+import { DatabaseModule } from "@/infra/database/database.module";
 import { Module } from "@nestjs/common";
 import { AuthenticateController } from "./controllers/authenticate.controller";
 import { CreateAccountController } from "./controllers/create-account.controller";
