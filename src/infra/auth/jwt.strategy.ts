@@ -1,8 +1,8 @@
+import { Env } from "@/infra/env";
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
-import { Env } from "@/env";
 import z from "zod";
 
 const tokenSchema = z.object({
