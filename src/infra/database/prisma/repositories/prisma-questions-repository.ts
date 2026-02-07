@@ -3,8 +3,8 @@ import { QuestionsRepository } from "@/domain/forum/application/repositories/que
 import { Question } from "@/domain/forum/enterprise/entities/question";
 import { Slug } from "@/domain/forum/enterprise/entities/value-objects/slug";
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma.service";
 import { PrismaQuestionMapper } from "../mappers/PrismaQuestionMapper";
+import { PrismaService } from "../prisma.service";
 
 @Injectable()
 export class PrismaQuestionsRepository implements QuestionsRepository {
@@ -22,22 +22,50 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
   }
 
   async findBySlug(slug: Slug): Promise<Question | null> {
-    throw new Error("Method not implemented.");
+    const question = await this.prisma.question.findUnique({
+      where: { slug: slug.value }
+    });
+
+    if (!question)
+      return null;
+
+    return PrismaQuestionMapper.toDomain(question);
   }
 
-  async findManyRecent(params: PaginationParams): Promise<Question[]> {
-    throw new Error("Method not implemented.");
+  async findManyRecent({ page }: PaginationParams): Promise<Question[]> {
+    const questions = await this.prisma.question.findMany({
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 20,
+      skip: (page - 1) * 20
+    });
+
+    return questions.map(PrismaQuestionMapper.toDomain);
   }
 
   async create(question: Question): Promise<void> {
-    throw new Error("Method not implemented.");
+    const data = PrismaQuestionMapper.toPrisma(question);
+
+    await this.prisma.question.create({
+      data
+    });
   }
 
   async save(question: Question): Promise<void> {
-    throw new Error("Method not implemented.");
+    const data = PrismaQuestionMapper.toPrisma(question);
+
+    await this.prisma.question.update({
+      where: {
+        id: question.id.toString()
+      },
+      data
+    });
   }
 
   async delete(question: Question): Promise<void> {
-    throw new Error("Method not implemented.");
+    await this.prisma.question.delete({
+      where: { id: question.id.toString() }
+    });
   }
 }
