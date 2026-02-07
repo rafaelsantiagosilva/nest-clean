@@ -1,9 +1,9 @@
 import { left, right, type Either } from "@/core/either";
-import type { Question } from "../../enterprise/entities/question";
-import type { AnswersRepository } from "../repositories/answers-repository";
-import type { QuestionsRepository } from "../repositories/questions-repository";
-import { NotAllowedError } from "./errors/not-allowed-error";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
+import type { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository";
+import type { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
+import type { Question } from "../../../enterprise/entities/question";
+import { NotAllowedError } from "../errors/not-allowed-error";
+import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 type ChooseQuestionBestAnswerUseCaseRequest = {
   authorId: string;

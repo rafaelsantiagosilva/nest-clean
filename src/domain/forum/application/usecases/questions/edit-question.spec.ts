@@ -1,12 +1,12 @@
+import { UniqueEntityId } from "@/core/entities/unique-entity-id";
+import { Slug } from "@/domain/forum/enterprise/entities/value-objects/slug";
 import { makeQuestion } from "@/test/factories/make-question";
+import { makeQuestionAttachment } from "@/test/factories/make-question-attachment";
 import { InMemoryQuestionAttachmentsRepository } from "@/test/repositories/in-memory-question-attachments-repository";
 import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-questions-repository";
-import { Slug } from "../../enterprise/entities/value-objects/slug";
+import { NotAllowedError } from "../errors/not-allowed-error";
+import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 import { EditQuestionUseCase } from "./edit-question";
-import { NotAllowedError } from "./errors/not-allowed-error";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
-import { makeQuestionAttachment } from "@/test/factories/make-question-attachment";
-import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository;
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository;

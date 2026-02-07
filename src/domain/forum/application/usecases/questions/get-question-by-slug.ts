@@ -1,8 +1,8 @@
 import { left, right, type Either } from "@/core/either";
-import type { Question } from "../../enterprise/entities/question";
-import type { Slug } from "../../enterprise/entities/value-objects/slug";
-import type { QuestionsRepository } from "../repositories/questions-repository";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
+import type { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
+import type { Question } from "@/domain/forum/enterprise/entities/question";
+import type { Slug } from "@/domain/forum/enterprise/entities/value-objects/slug";
+import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 type GetQuestionBySlugUseCaseRequest = {
   slug: Slug

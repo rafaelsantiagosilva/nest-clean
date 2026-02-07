@@ -1,9 +1,9 @@
 import { right, type Either } from "@/core/either";
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
-import { QuestionAttachment } from "../../enterprise/entities/question-attachment";
-import { Question } from "../../enterprise/entities/question";
-import type { QuestionsRepository } from "../repositories/questions-repository";
-import { QuestionAttachmentList } from "../../enterprise/entities/question-attachment-list";
+import type { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
+import { Question } from "@/domain/forum/enterprise/entities/question";
+import { QuestionAttachment } from "@/domain/forum/enterprise/entities/question-attachment";
+import { QuestionAttachmentList } from "@/domain/forum/enterprise/entities/question-attachment-list";
 import { Injectable } from "@nestjs/common";
 
 type CreateQuestionUseCaseRequest = {

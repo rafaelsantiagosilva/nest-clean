@@ -1,11 +1,11 @@
-import { makeQuestion } from "@/test/factories/make-question";
-import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-questions-repository";
-import { DeleteQuestionUseCase } from "./delete-question";
-import { NotAllowedError } from "./errors/not-allowed-error";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
-import { InMemoryQuestionAttachmentsRepository } from "@/test/repositories/in-memory-question-attachments-repository";
-import { makeQuestionAttachment } from "@/test/factories/make-question-attachment";
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
+import { makeQuestion } from "@/test/factories/make-question";
+import { makeQuestionAttachment } from "@/test/factories/make-question-attachment";
+import { InMemoryQuestionAttachmentsRepository } from "@/test/repositories/in-memory-question-attachments-repository";
+import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-questions-repository";
+import { NotAllowedError } from "../errors/not-allowed-error";
+import { ResourceNotFoundError } from "../errors/resource-not-found-error";
+import { DeleteQuestionUseCase } from "./delete-question";
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository;
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository

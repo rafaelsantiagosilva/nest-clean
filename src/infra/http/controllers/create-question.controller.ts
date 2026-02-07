@@ -1,4 +1,4 @@
-import { CreateQuestionUseCase } from "@/domain/forum/application/usecases/create-question";
+import { CreateQuestionUseCase } from "@/domain/forum/application/usecases/questions/create-question";
 import { CurrentUser } from "@/infra/auth/current-user.decorator";
 import { JwtAuthGuard } from "@/infra/auth/jwt.auth.guard";
 import { TokenSchema as UserPayload } from "@/infra/auth/jwt.strategy";

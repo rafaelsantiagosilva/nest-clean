@@ -1,9 +1,9 @@
 import { left, right, type Either } from "@/core/either";
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
-import { AnswerComment } from "../../enterprise/entities/answer-comment";
-import type { AnswerCommentsRepository } from "../repositories/answer-comments-repository";
-import type { AnswersRepository } from "../repositories/answers-repository";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
+import { AnswerComment } from "../../../enterprise/entities/answer-comment";
+import type { AnswerCommentsRepository } from "../../repositories/answer-comments-repository";
+import type { AnswersRepository } from "../../repositories/answers-repository";
+import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 type CommentOnAnswerUseCaseRequest = {
   content: string;

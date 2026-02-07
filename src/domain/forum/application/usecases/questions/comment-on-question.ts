@@ -1,9 +1,9 @@
-import { UniqueEntityId } from "@/core/entities/unique-entity-id";
-import { QuestionComment } from "../../enterprise/entities/question-comment";
-import type { QuestionCommentsRepository } from "../repositories/question-comments-repository";
-import type { QuestionsRepository } from "../repositories/questions-repository";
 import { left, right, type Either } from "@/core/either";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
+import { UniqueEntityId } from "@/core/entities/unique-entity-id";
+import type { QuestionCommentsRepository } from "@/domain/forum/application/repositories/question-comments-repository";
+import type { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
+import { QuestionComment } from "@/domain/forum/enterprise/entities/question-comment";
+import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 type CommentOnQuestionUseCaseRequest = {
   content: string;

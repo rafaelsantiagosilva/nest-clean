@@ -1,11 +1,11 @@
 import { left, right, type Either } from "@/core/either";
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
-import { QuestionAttachmentList } from "../../enterprise/entities/question-attachment-list";
-import { QuestionAttachment } from "../../enterprise/entities/question-attachment";
-import type { QuestionAttachmentRepository } from "../repositories/question-attachments-repository";
-import type { QuestionsRepository } from "../repositories/questions-repository";
-import { NotAllowedError } from "./errors/not-allowed-error";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
+import type { QuestionAttachmentRepository } from "@/domain/forum/application/repositories/question-attachments-repository";
+import type { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
+import { QuestionAttachment } from "@/domain/forum/enterprise/entities/question-attachment";
+import { QuestionAttachmentList } from "@/domain/forum/enterprise/entities/question-attachment-list";
+import { NotAllowedError } from "../errors/not-allowed-error";
+import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 type EditQuestionUseCaseRequest = {
   id: string;

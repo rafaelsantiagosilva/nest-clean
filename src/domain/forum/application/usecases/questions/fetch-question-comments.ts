@@ -1,6 +1,6 @@
 import { right, type Either } from "@/core/either";
-import type { QuestionComment } from "../../enterprise/entities/question-comment";
-import type { QuestionCommentsRepository } from "../repositories/question-comments-repository";
+import type { QuestionCommentsRepository } from "@/domain/forum/application/repositories/question-comments-repository";
+import type { QuestionComment } from "@/domain/forum/enterprise/entities/question-comment";
 
 type FetchQuestionCommentsUseCaseRequest = {
   page: number;

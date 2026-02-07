@@ -1,7 +1,6 @@
 import { right, type Either } from "@/core/either";
-import type { Answer } from "../../enterprise/entities/answer";
-import type { Question } from "../../enterprise/entities/question";
-import type { AnswersRepository } from "../repositories/answers-repository";
+import type { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository";
+import type { Answer } from "@/domain/forum/enterprise/entities/answer";
 
 type FetchQuestionAnswersUseCaseRequest = {
   page: number;
