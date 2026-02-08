@@ -1,7 +1,7 @@
 import { left, right, type Either } from "@/core/either";
 import type { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
-import { NotAllowedError } from "../errors/not-allowed-error";
-import { ResourceNotFoundError } from "../errors/resource-not-found-error";
+import { NotAllowedError } from "../../../../../core/errors/not-allowed-error";
+import { ResourceNotFoundError } from "../../../../../core/errors/resource-not-found-error";
 
 type DeleteQuestionUseCaseRequest = {
   id: string;

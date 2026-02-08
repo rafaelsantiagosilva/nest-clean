@@ -1,5 +1,5 @@
-import { NotAllowedError } from "@/domain/forum/application/usecases/errors/not-allowed-error";
-import { ResourceNotFoundError } from "@/domain/forum/application/usecases/errors/resource-not-found-error";
+import { NotAllowedError } from "@/core/errors/not-allowed-error";
+import { ResourceNotFoundError } from "@/core/errors/resource-not-found-error";
 import { makeNotification } from "@/test/factories/make-notification";
 import { InMemoryNotificationsRepository } from "@/test/repositories/in-memory-notifications-repository";
 import { ReadNotificationUseCase } from "./read-notification";
