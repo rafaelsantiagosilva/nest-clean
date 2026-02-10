@@ -9,6 +9,8 @@ import { CreateAccountController } from "./controllers/create-account.controller
 import { CreateQuestionController } from "./controllers/create-question.controller";
 import { FetchRecentQuestionsController } from "./controllers/fetch-recent-questions.controller";
 import { CryptoModule } from "../crypto/crypto.module";
+import { APP_GUARD } from "@nestjs/core";
+import { JwtAuthGuard } from "../auth/jwt.auth.guard";
 
 @Module({
   imports: [
@@ -16,6 +18,10 @@ import { CryptoModule } from "../crypto/crypto.module";
     CryptoModule
   ],
   providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard
+    },
     CreateQuestionUseCase,
     FetchRecentQuestionsUseCase,
     RegisterStudentUseCase,
