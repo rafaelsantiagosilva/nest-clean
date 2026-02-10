@@ -2,7 +2,6 @@ import { Encrypter } from "@/domain/forum/application/crypto/encrypter";
 import { HashComparer } from "@/domain/forum/application/crypto/hash-comparer";
 import { HashGenerator } from "@/domain/forum/application/crypto/hash-generator";
 import { Module } from "@nestjs/common";
-import { JwtService } from "@nestjs/jwt";
 import { BcryptHasher } from "./bcrypt-hasher";
 import { JwtEncrypter } from "./jwt-encrypter";
 
@@ -12,7 +11,6 @@ import { JwtEncrypter } from "./jwt-encrypter";
     { provide: HashGenerator, useClass: BcryptHasher },
     { provide: Encrypter, useClass: JwtEncrypter }
   ],
-  imports: [JwtService],
   exports: [
     Encrypter,
     HashComparer,

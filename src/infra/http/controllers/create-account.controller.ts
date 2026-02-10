@@ -1,6 +1,6 @@
 import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation.pipe";
 import { PrismaService } from "@/infra/database/prisma/prisma.service";
-import { Body, ConflictException, Controller, Post, UsePipes } from "@nestjs/common";
+import { Body, ConflictException, Controller, InternalServerErrorException, Post, UsePipes } from "@nestjs/common";
 import * as bcrypt from "bcryptjs";
 import { z } from "zod";
 import { RegisterStudentUseCase } from "@/domain/forum/application/usecases/students/register-student";
@@ -23,10 +23,14 @@ export class CreateAccountController {
   async handle(@Body() data: CreateAccountBody) {
     const { name, email, password } = createAccountBodySchema.parse(data);
 
-    await this.registerStudent.execute({
+    const result = await this.registerStudent.execute({
       name,
       email,
       password
     });
+
+    if (result.isLeft()) {
+      throw new InternalServerErrorException();
+    }
   }
 }
