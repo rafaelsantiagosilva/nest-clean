@@ -14,9 +14,13 @@ import { PrismaQuestionAttachmentsRepository } from "./prisma/repositories/prism
 import { PrismaQuestionCommentsRepository } from "./prisma/repositories/prisma-question-comments-repository";
 import { PrismaQuestionsRepository } from "./prisma/repositories/prisma-questions-repository";
 import { PrismaStudentsRepository } from "./prisma/repositories/prisma-students-repository";
+import { EnvService } from "../env/env.service";
+import { EnvModule } from "../env/env.module";
 
 @Module({
+  imports: [EnvModule],
   providers: [
+    EnvService,
     PrismaService,
     {
       provide: QuestionsRepository,
