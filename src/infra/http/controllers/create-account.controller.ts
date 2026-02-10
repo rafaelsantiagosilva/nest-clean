@@ -1,10 +1,7 @@
-import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation.pipe";
-import { PrismaService } from "@/infra/database/prisma/prisma.service";
-import { Body, ConflictException, Controller, InternalServerErrorException, Post, UsePipes } from "@nestjs/common";
-import * as bcrypt from "bcryptjs";
-import { z } from "zod";
 import { RegisterStudentUseCase } from "@/domain/forum/application/usecases/students/register-student";
-import { StudentsRepository } from "@/domain/forum/application/repositories/students-repository";
+import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation.pipe";
+import { Body, Controller, InternalServerErrorException, Post, UsePipes } from "@nestjs/common";
+import { z } from "zod";
 
 const createAccountBodySchema = z.object({
   name: z.string().min(5),
