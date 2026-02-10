@@ -24,7 +24,7 @@ export class AuthenticateStudentUseCase {
     if (!student)
       return left(new WrongCredentialsError());
 
-    const isPasswordValid = await this.hashComparer.compare(student.password, password);
+    const isPasswordValid = await this.hashComparer.compare(password, student.password);
     if (!isPasswordValid)
       return left(new WrongCredentialsError());
 
