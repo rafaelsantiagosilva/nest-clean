@@ -4,6 +4,7 @@ import type { QuestionCommentsRepository } from "@/domain/forum/application/repo
 import type { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
 import { QuestionComment } from "@/domain/forum/enterprise/entities/question-comment";
 import { ResourceNotFoundError } from "../../../../../core/errors/resource-not-found-error";
+import { Injectable } from "@nestjs/common";
 
 type CommentOnQuestionUseCaseRequest = {
   content: string;
@@ -13,6 +14,7 @@ type CommentOnQuestionUseCaseRequest = {
 
 type CommentOnQuestionUseCaseResponse = Either<ResourceNotFoundError, { questionComment: QuestionComment }>;
 
+@Injectable()
 export class CommentOnQuestionUseCase {
   constructor(
     private questionsRepository: QuestionsRepository,

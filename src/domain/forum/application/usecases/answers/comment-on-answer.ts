@@ -4,6 +4,7 @@ import { AnswerComment } from "../../../enterprise/entities/answer-comment";
 import type { AnswerCommentsRepository } from "../../repositories/answer-comments-repository";
 import type { AnswersRepository } from "../../repositories/answers-repository";
 import { ResourceNotFoundError } from "../../../../../core/errors/resource-not-found-error";
+import { Injectable } from "@nestjs/common";
 
 type CommentOnAnswerUseCaseRequest = {
   content: string;
@@ -13,6 +14,7 @@ type CommentOnAnswerUseCaseRequest = {
 
 type CommentOnAnswerUseCaseResponse = Either<ResourceNotFoundError, { answerComment: AnswerComment }>;
 
+@Injectable()
 export class CommentOnAnswerUseCase {
   constructor(
     private answersRepository: AnswersRepository,

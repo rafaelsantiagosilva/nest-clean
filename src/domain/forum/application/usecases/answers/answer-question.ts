@@ -4,6 +4,7 @@ import type { AnswersRepository } from "@/domain/forum/application/repositories/
 import { Answer } from "@/domain/forum/enterprise/entities/answer";
 import { AnswerAttachment } from "../../../enterprise/entities/answer-attachement";
 import { AnswerAttachmentList } from "../../../enterprise/entities/answer-attachment-list";
+import { Injectable } from "@nestjs/common";
 
 type AnswerQuestionUseCaseRequest = {
   instructorId: string;
@@ -14,6 +15,7 @@ type AnswerQuestionUseCaseRequest = {
 
 type AnswerQuestionUseCaseResponse = Either<null, { answer: Answer }>;
 
+@Injectable()
 export class AnswerQuestionUseCase {
   constructor(
     private answerRepository: AnswersRepository

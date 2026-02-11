@@ -6,6 +6,7 @@ import { QuestionAttachment } from "@/domain/forum/enterprise/entities/question-
 import { QuestionAttachmentList } from "@/domain/forum/enterprise/entities/question-attachment-list";
 import { NotAllowedError } from "../../../../../core/errors/not-allowed-error";
 import { ResourceNotFoundError } from "../../../../../core/errors/resource-not-found-error";
+import { Injectable } from "@nestjs/common";
 
 type EditQuestionUseCaseRequest = {
   id: string;
@@ -17,6 +18,7 @@ type EditQuestionUseCaseRequest = {
 
 type EditQuestionUseCaseResponse = Either<ResourceNotFoundError | NotAllowedError, {}>;
 
+@Injectable()
 export class EditQuestionUseCase {
   constructor(
     private questionsRepository: QuestionsRepository,
