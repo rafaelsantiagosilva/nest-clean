@@ -7,7 +7,7 @@ import { Test } from "@nestjs/testing";
 import { hash } from "bcryptjs";
 import request from "supertest";
 
-describe("Create Question (E2E)", () => {
+describe("Fetch Recent Questions (E2E)", () => {
   let app: INestApplication;
   let prisma: PrismaService;
   let jwt: JwtService;
@@ -28,33 +28,33 @@ describe("Create Question (E2E)", () => {
     await clearDatabase(prisma);
   });
 
-  test("[POST] /questions", async () => {
-    const user = await prisma.user.create({
-      data: {
-        name: "John Doe",
-        email: "john.doe@email.com",
-        password: await hash("123456", 8)
-      }
-    });
 
-    const accessToken = jwt.sign({ sub: user.id });
-
-    const response = await request(app.getHttpServer())
-      .post("/questions")
-      .set("Authorization", `Bearer ${accessToken}`)
-      .send({
-        title: "New question",
-        content: "Question content"
+  test("[GET] /questions/:slug", async () => {
+      const user = await prisma.user.create({
+        data: {
+          name: "John Doe",
+          email: "john.doe@email.com",
+          password: await hash("123456", 8)
+        }
       });
 
-    expect(response.statusCode).toBe(201);
+      const accessToken = jwt.sign({ sub: user.id });
+      const slug = "find-by-slug-test";
 
-    const questionOnDatabase = await prisma.question.findFirst({
-      where: {
-        title: "New question"
-      }
-    });
+      await prisma.question.create({
+        data: {
+          title: "Find By Slug Test",
+          slug,
+          content: "A random content",
+          authorId: user.id
+        }
+      });
 
-    expect(questionOnDatabase).toBeTruthy();
+      const response = await request(app.getHttpServer())
+        .get(`/questions/${slug}`)
+        .set("Authorization", `Bearer ${accessToken}`)
+
+      expect(response.statusCode).toBe(200);
+      expect(response.body.question).toBeTruthy();
   });
 });

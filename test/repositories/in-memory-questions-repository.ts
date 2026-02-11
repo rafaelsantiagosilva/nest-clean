@@ -16,8 +16,8 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
     return this.data.find((question) => question.id.toString() === id) ?? null;
   }
 
-  async findBySlug(slug: Slug): Promise<Question | null> {
-    return this.data.find((question) => question.slug.value === slug.value) ?? null;
+  async findBySlug(slug: string): Promise<Question | null> {
+    return this.data.find((question) => question.slug.value === slug) ?? null;
   }
 
   async findManyRecent({ page }: PaginationParams): Promise<Question[]> {

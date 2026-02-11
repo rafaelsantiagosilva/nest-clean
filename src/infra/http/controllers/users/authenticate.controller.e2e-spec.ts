@@ -1,5 +1,6 @@
 import { AppModule } from "@/infra/app.module";
 import { PrismaService } from "@/infra/database/prisma/prisma.service";
+import { clearDatabase } from "@/test/utils/clear-database";
 import { INestApplication } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import { hash } from "bcryptjs";
@@ -19,6 +20,11 @@ describe("Authenticate (E2E)", () => {
 
     await app.init();
   });
+
+  beforeEach(async () => {
+    await clearDatabase(prisma);
+  });
+
 
   test("[POST] /sessions", async () => {
     await prisma.user.create({

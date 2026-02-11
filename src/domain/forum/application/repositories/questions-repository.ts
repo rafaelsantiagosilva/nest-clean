@@ -4,7 +4,7 @@ import type { Slug } from "../../enterprise/entities/value-objects/slug";
 
 export abstract class QuestionsRepository {
   abstract findById(id: string): Promise<Question | null>;
-  abstract findBySlug(slug: Slug): Promise<Question | null>;
+  abstract findBySlug(slug: string): Promise<Question | null>;
   abstract findManyRecent(params: PaginationParams): Promise<Question[]>;
   abstract create(question: Question): Promise<void>;
   abstract save(question: Question): Promise<void>;

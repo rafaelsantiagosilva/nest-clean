@@ -11,6 +11,8 @@ import { CreateQuestionController } from "./controllers/questions/create-questio
 import { FetchRecentQuestionsController } from "./controllers/questions/fetch-recent-questions.controller";
 import { AuthenticateController } from "./controllers/users/authenticate.controller";
 import { CreateAccountController } from "./controllers/users/create-account.controller";
+import { GetQuestionBySlugController } from "./controllers/questions/get-question-by-slug.controller";
+import { GetQuestionBySlugUseCase } from "@/domain/forum/application/usecases/questions/get-question-by-slug";
 
 @Module({
   imports: [
@@ -25,13 +27,15 @@ import { CreateAccountController } from "./controllers/users/create-account.cont
     CreateQuestionUseCase,
     FetchRecentQuestionsUseCase,
     RegisterStudentUseCase,
-    AuthenticateStudentUseCase
+    AuthenticateStudentUseCase,
+    GetQuestionBySlugUseCase
   ],
   controllers: [
     CreateQuestionController,
     CreateAccountController,
     AuthenticateController,
-    FetchRecentQuestionsController
+    FetchRecentQuestionsController,
+    GetQuestionBySlugController
   ],
 
 })

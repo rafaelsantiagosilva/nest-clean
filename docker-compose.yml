@@ -11,3 +11,15 @@ services:
       PGDATA: /data/postgres
     volumes:
       - ./data/pg:/data/postgres
+  postgres-test:
+    container_name: nest-clean-test-e2e
+    image: postgres
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: testdb
+      PGDATA: /data/test
+    tmpfs:
+      - /var/lib/postgresql/data

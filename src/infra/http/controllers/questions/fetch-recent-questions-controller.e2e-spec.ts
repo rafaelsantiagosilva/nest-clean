@@ -1,5 +1,6 @@
 import { AppModule } from "@/infra/app.module";
 import { PrismaService } from "@/infra/database/prisma/prisma.service";
+import { clearDatabase } from "@/test/utils/clear-database";
 import { INestApplication } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { Test } from "@nestjs/testing";
@@ -23,11 +24,16 @@ describe("Fetch Recent Questions (E2E)", () => {
     await app.init();
   });
 
+  beforeEach(async () => {
+    await clearDatabase(prisma);
+  });
+
+
   test("[GET] /questions/recent", async () => {
     const user = await prisma.user.create({
       data: {
         name: "John Doe",
-        email: "john.doe3@email.com",
+        email: "john.doe@email.com",
         password: await hash("123456", 8)
       }
     });
