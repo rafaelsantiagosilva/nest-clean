@@ -26,7 +26,7 @@ describe("Get Question By Slug Use Case (Unit)", async () => {
     await inMemoryQuestionsRepository.create(createdQuestion);
 
     const result = await sut.execute({
-      slug: Slug.create("example-question")
+      slug: "example-question"
     });
 
     expect(result.isRight()).toBe(true);
@@ -36,7 +36,7 @@ describe("Get Question By Slug Use Case (Unit)", async () => {
 
   it("should not be able to get a inexisting question by slug", async () => {
     const result = await sut.execute({
-      slug: Slug.create("new-title")
+      slug: "new-title"
     });
 
     expect(result.isLeft()).toBe(true);
