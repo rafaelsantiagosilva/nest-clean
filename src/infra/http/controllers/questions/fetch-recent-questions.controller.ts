@@ -1,9 +1,8 @@
 import { FetchRecentQuestionsUseCase } from "@/domain/forum/application/usecases/questions/fetch-recent-questions";
-import { JwtAuthGuard } from "@/infra/auth/jwt.auth.guard";
 import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation.pipe";
 import { BadRequestException, Controller, Get, Query } from "@nestjs/common";
 import z from "zod";
-import { QuestionPresenter } from "../presenters/question-presenter";
+import { QuestionPresenter } from "../../presenters/question-presenter";
 
 const pageQueryParamSchema = z.string()
   .optional()
