@@ -10,7 +10,7 @@ import { DatabaseModule } from "@/infra/database/database.module";
 import { QuestionFactory } from "@/test/factories/make-question";
 import { Slug } from "@/domain/forum/enterprise/entities/value-objects/slug";
 
-describe("Fetch Recent Questions (E2E)", () => {
+describe("Get Question By Slug (E2E)", () => {
   let app: INestApplication;
   let prisma: PrismaService;
   let studentFactory: StudentFactory;
