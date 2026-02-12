@@ -1,7 +1,7 @@
 import { left, right, type Either } from "@/core/either";
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
-import type { QuestionAttachmentRepository } from "@/domain/forum/application/repositories/question-attachments-repository";
-import type { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
+import { QuestionAttachmentRepository } from "@/domain/forum/application/repositories/question-attachments-repository";
+import { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
 import { QuestionAttachment } from "@/domain/forum/enterprise/entities/question-attachment";
 import { QuestionAttachmentList } from "@/domain/forum/enterprise/entities/question-attachment-list";
 import { NotAllowedError } from "../../../../../core/errors/not-allowed-error";

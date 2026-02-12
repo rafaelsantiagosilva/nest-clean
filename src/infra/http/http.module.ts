@@ -13,6 +13,8 @@ import { AuthenticateController } from "./controllers/users/authenticate.control
 import { CreateAccountController } from "./controllers/users/create-account.controller";
 import { GetQuestionBySlugController } from "./controllers/questions/get-question-by-slug.controller";
 import { GetQuestionBySlugUseCase } from "@/domain/forum/application/usecases/questions/get-question-by-slug";
+import { EditQuestionUseCase } from "@/domain/forum/application/usecases/questions/edit-question";
+import { EditQuestionController } from "./controllers/questions/edit-question.controller";
 
 @Module({
   imports: [
@@ -28,14 +30,16 @@ import { GetQuestionBySlugUseCase } from "@/domain/forum/application/usecases/qu
     FetchRecentQuestionsUseCase,
     RegisterStudentUseCase,
     AuthenticateStudentUseCase,
-    GetQuestionBySlugUseCase
+    GetQuestionBySlugUseCase,
+    EditQuestionUseCase
   ],
   controllers: [
     CreateQuestionController,
     CreateAccountController,
     AuthenticateController,
     FetchRecentQuestionsController,
-    GetQuestionBySlugController
+    GetQuestionBySlugController,
+    EditQuestionController
   ],
 
 })
