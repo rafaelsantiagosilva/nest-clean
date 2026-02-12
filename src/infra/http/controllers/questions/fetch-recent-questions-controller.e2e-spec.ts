@@ -1,24 +1,31 @@
 import { AppModule } from "@/infra/app.module";
+import { DatabaseModule } from "@/infra/database/database.module";
 import { PrismaService } from "@/infra/database/prisma/prisma.service";
+import { QuestionFactory } from "@/test/factories/make-question";
+import { StudentFactory } from "@/test/factories/make-student";
 import { clearDatabase } from "@/test/utils/clear-database";
 import { INestApplication } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { Test } from "@nestjs/testing";
-import { hash } from "bcryptjs";
 import request from "supertest";
 
 describe("Fetch Recent Questions (E2E)", () => {
   let app: INestApplication;
   let prisma: PrismaService;
+  let studentFactory: StudentFactory;
+  let questionFactory: QuestionFactory;
   let jwt: JwtService;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
-      imports: [AppModule]
+      imports: [AppModule, DatabaseModule],
+      providers: [StudentFactory, QuestionFactory]
     }).compile();
 
     app = moduleRef.createNestApplication();
     prisma = moduleRef.get(PrismaService);
+    studentFactory = moduleRef.get(StudentFactory);
+    questionFactory = moduleRef.get(QuestionFactory);
     jwt = moduleRef.get(JwtService);
 
     await app.init();
@@ -30,37 +37,23 @@ describe("Fetch Recent Questions (E2E)", () => {
 
 
   test("[GET] /questions/recent", async () => {
-    const user = await prisma.user.create({
-      data: {
-        name: "John Doe",
-        email: "john.doe@email.com",
-        password: await hash("123456", 8)
-      }
+    const user = await studentFactory.makePrismaStudent();
+
+    const accessToken = jwt.sign({ sub: user.id.toString() });
+
+    await questionFactory.makePrismaQuestion({
+      authorId: user.id,
+      title: "Question 1"
     });
 
-    const accessToken = jwt.sign({ sub: user.id });
+    await questionFactory.makePrismaQuestion({
+      authorId: user.id,
+      title: "Question 2"
+    });
 
-    await prisma.question.createMany({
-      data: [
-        {
-          authorId: user.id,
-          title: "Question 1",
-          slug: "question-1",
-          content: "New Question"
-        },
-        {
-          authorId: user.id,
-          title: "Question 2",
-          slug: "question-2",
-          content: "New Question"
-        },
-        {
-          authorId: user.id,
-          title: "Question 3",
-          slug: "question-3",
-          content: "New Question"
-        },
-      ]
+    await questionFactory.makePrismaQuestion({
+      authorId: user.id,
+      title: "Question 3"
     });
 
     const response = await request(app.getHttpServer())
