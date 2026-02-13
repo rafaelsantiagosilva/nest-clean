@@ -22,12 +22,13 @@ export class Answer extends AggregateRoot<AnswerProps> {
       createdAt: props.createdAt ?? new Date()
     }, id);
 
-    const isNewAnswer = !id;
+    const isNewAnswer = id ? false : true;
 
-    if (isNewAnswer)
+    if (isNewAnswer) {
       answer.addDomainEvent(
-        new AnswerCreatedEvent(answer)
+        new AnswerCreatedEvent(answer.id)
       );
+    }
 
     return answer;
   }

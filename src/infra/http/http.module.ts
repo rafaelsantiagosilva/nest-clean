@@ -17,6 +17,8 @@ import { EditQuestionUseCase } from "@/domain/forum/application/usecases/questio
 import { EditQuestionController } from "./controllers/questions/edit-question.controller";
 import { DeleteQuestionUseCase } from "@/domain/forum/application/usecases/questions/delete-question";
 import { DeleteQuestionController } from "./controllers/questions/delete-question.controller";
+import { AnswerQuestionUseCase } from "@/domain/forum/application/usecases/answers/answer-question";
+import { AnswerQuestionController } from "./controllers/answers/answer-question.controller";
 
 @Module({
   imports: [
@@ -34,7 +36,8 @@ import { DeleteQuestionController } from "./controllers/questions/delete-questio
     AuthenticateStudentUseCase,
     GetQuestionBySlugUseCase,
     EditQuestionUseCase,
-    DeleteQuestionUseCase
+    DeleteQuestionUseCase,
+    AnswerQuestionUseCase,
   ],
   controllers: [
     CreateQuestionController,
@@ -43,7 +46,8 @@ import { DeleteQuestionController } from "./controllers/questions/delete-questio
     FetchRecentQuestionsController,
     GetQuestionBySlugController,
     EditQuestionController,
-    DeleteQuestionController
+    DeleteQuestionController,
+    AnswerQuestionController
   ],
 
 })
