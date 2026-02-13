@@ -10,7 +10,7 @@ import { JwtService } from "@nestjs/jwt";
 import { Test } from "@nestjs/testing";
 import request from "supertest";
 
-describe("Answer Question (E2E)", () => {
+describe("Fetch Question Answers (E2E)", () => {
   let app: INestApplication;
   let prisma: PrismaService;
   let studentFactory: StudentFactory;
