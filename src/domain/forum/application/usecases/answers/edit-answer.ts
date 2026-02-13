@@ -1,9 +1,9 @@
 import { left, right, type Either } from "@/core/either";
-import type { AnswersRepository } from "../../repositories/answers-repository";
+import { AnswersRepository } from "../../repositories/answers-repository";
 import { NotAllowedError } from "../../../../../core/errors/not-allowed-error";
 import { ResourceNotFoundError } from "../../../../../core/errors/resource-not-found-error";
 import { AnswerAttachment } from "../../../enterprise/entities/answer-attachement";
-import type { AnswerAttachmentRepository } from "../../repositories/answer-attachments-repository";
+import { AnswerAttachmentRepository } from "../../repositories/answer-attachments-repository";
 import { AnswerAttachmentList } from "../../../enterprise/entities/answer-attachment-list";
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 import { Injectable } from "@nestjs/common";
