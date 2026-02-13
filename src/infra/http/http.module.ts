@@ -23,6 +23,8 @@ import { EditAnswerController } from "./controllers/answers/edit-answer.controll
 import { EditAnswerUseCase } from "@/domain/forum/application/usecases/answers/edit-answer";
 import { DeleteAnswerUseCase } from "@/domain/forum/application/usecases/answers/delete-answer";
 import { DeleteAnswerController } from "./controllers/answers/delete-answer.controller";
+import { FetchQuestionAnswersController } from "./controllers/answers/fetch-question-answers.controller";
+import { FetchQuestionAnswersUseCase } from "@/domain/forum/application/usecases/answers/fetch-question-answers";
 
 @Module({
   imports: [
@@ -43,7 +45,8 @@ import { DeleteAnswerController } from "./controllers/answers/delete-answer.cont
     DeleteQuestionUseCase,
     AnswerQuestionUseCase,
     EditAnswerUseCase,
-    DeleteAnswerUseCase
+    DeleteAnswerUseCase,
+    FetchQuestionAnswersUseCase
   ],
   controllers: [
     CreateQuestionController,
@@ -55,7 +58,8 @@ import { DeleteAnswerController } from "./controllers/answers/delete-answer.cont
     DeleteQuestionController,
     AnswerQuestionController,
     EditAnswerController,
-    DeleteAnswerController
+    DeleteAnswerController,
+    FetchQuestionAnswersController
   ],
 
 })

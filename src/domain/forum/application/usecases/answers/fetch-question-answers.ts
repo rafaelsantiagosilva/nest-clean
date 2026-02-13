@@ -1,5 +1,5 @@
 import { right, type Either } from "@/core/either";
-import type { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository";
+import { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository";
 import type { Answer } from "@/domain/forum/enterprise/entities/answer";
 import { Injectable } from "@nestjs/common";
 
