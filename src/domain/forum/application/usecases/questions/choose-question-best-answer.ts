@@ -1,6 +1,6 @@
 import { left, right, type Either } from "@/core/either";
-import type { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository";
-import type { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
+import  { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository";
+import  { QuestionsRepository } from "@/domain/forum/application/repositories/questions-repository";
 import type { Question } from "../../../enterprise/entities/question";
 import { NotAllowedError } from "../../../../../core/errors/not-allowed-error";
 import { ResourceNotFoundError } from "../../../../../core/errors/resource-not-found-error";
