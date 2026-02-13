@@ -45,7 +45,7 @@ describe("Edit Question (E2E)", () => {
     });
 
     const response = await request(app.getHttpServer())
-      .delete(`/questions/${question.id}`)
+      .delete(`/questions/${question.id.toString()}`)
       .set("Authorization", `Bearer ${accessToken}`);
 
     expect(response.statusCode).toBe(204);

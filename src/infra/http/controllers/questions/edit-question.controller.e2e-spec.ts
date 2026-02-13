@@ -45,7 +45,7 @@ describe("Edit Question (E2E)", () => {
     });
 
     const response = await request(app.getHttpServer())
-      .patch(`/questions/${question.id}`)
+      .patch(`/questions/${question.id.toString()}`)
       .set("Authorization", `Bearer ${accessToken}`)
       .send({
         title: "New question",

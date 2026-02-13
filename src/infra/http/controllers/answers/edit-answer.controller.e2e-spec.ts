@@ -53,7 +53,7 @@ describe("Answer Question (E2E)", () => {
     });
 
     const response = await request(app.getHttpServer())
-      .patch(`/answers/${answer.id}`)
+      .patch(`/answers/${answer.id.toString()}`)
       .set("Authorization", `Bearer ${accessToken}`)
       .send({
         content: "New answer content"

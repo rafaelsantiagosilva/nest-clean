@@ -53,7 +53,7 @@ describe("Answer Question (E2E)", () => {
     });
 
     const response = await request(app.getHttpServer())
-      .delete(`/answers/${answer.id}`)
+      .delete(`/answers/${answer.id.toString()}`)
       .set("Authorization", `Bearer ${accessToken}`)
 
     expect(response.statusCode).toBe(204);

@@ -45,7 +45,7 @@ describe("Answer Question (E2E)", () => {
     });
 
     const response = await request(app.getHttpServer())
-      .post(`/questions/${question.id}/answers`)
+      .post(`/questions/${question.id.toString()}/answers`)
       .set("Authorization", `Bearer ${accessToken}`)
       .send({
         content: "Answer content"
