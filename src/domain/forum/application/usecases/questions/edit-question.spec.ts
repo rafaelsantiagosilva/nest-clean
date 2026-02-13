@@ -45,7 +45,7 @@ describe("Edit Question Use Case (Unit)", async () => {
     });
 
 
-    const editedQuestion = await inMemoryQuestionsRepository.findBySlug(Slug.create("new-title"));
+    const editedQuestion = await inMemoryQuestionsRepository.findBySlug(createdQuestion.slug.value);
 
     expect(result.isRight()).toBe(true);
     expect(editedQuestion).toBeTruthy();
