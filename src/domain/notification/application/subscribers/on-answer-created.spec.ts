@@ -39,6 +39,7 @@ describe("On Answer Created", () => {
     sendNotificationExecuteSpy = vi.spyOn(sendNotificationUseCase, "execute");
 
     new OnAnswerCreated(
+      inMemoryAnswersRepository,
       inMemoryQuestionsRepository,
       sendNotificationUseCase
     );
