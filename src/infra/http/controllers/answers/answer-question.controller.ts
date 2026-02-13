@@ -7,7 +7,7 @@ import { ZodValidationPipe } from "../../pipes/zod-validation.pipe";
 
 const answerQuestionBodySchema = z.object({
   content: z.string(),
-  attachmentsIds: z.array(z.uuid())
+  attachmentsIds: z.array(z.uuid()).optional()
 });
 
 type AnswerQuestionBodySchema = z.infer<typeof answerQuestionBodySchema>;
@@ -28,7 +28,7 @@ export class AnswerQuestionController {
       answerContent: body.content,
       questionId,
       instructorId: user.sub.toString(),
-      attachmentsIds: body.attachmentsIds
+      attachmentsIds: body.attachmentsIds ?? []
     });
 
     if (result.isLeft()) {
