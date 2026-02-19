@@ -53,7 +53,7 @@ describe("Choose Question Best Answer (E2E)", () => {
     });
 
     const response = await request(app.getHttpServer())
-      .patch(`/questions/answers/${answer.id.toString()}`)
+      .patch(`/questions/answers/${answer.id.toString()}/choose-as-best`)
       .set("Authorization", `Bearer ${accessToken}`)
 
     expect(response.statusCode).toBe(204);

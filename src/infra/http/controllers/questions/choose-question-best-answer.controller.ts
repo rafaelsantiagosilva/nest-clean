@@ -7,7 +7,7 @@ import { BadRequestException, Controller, HttpCode, HttpStatus, Param, Patch } f
 export class ChooseQuestionBestAnswerController {
   constructor(private chooseQuestionBestAnswer: ChooseQuestionBestAnswerUseCase) { }
 
-  @Patch("/answers/:bestAnswerId")
+  @Patch("/answers/:bestAnswerId/choose-as-best")
   @HttpCode(HttpStatus.NO_CONTENT)
   async handle(
     @Param("bestAnswerId") bestAnswerId: string,
