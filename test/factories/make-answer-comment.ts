@@ -3,6 +3,7 @@ import { AnswerComment, type AnswerCommentProps } from "@/domain/forum/enterpris
 import { PrismaAnswerCommentMapper } from "@/infra/database/prisma/mappers/PrismaAnswerCommentMapper";
 import { PrismaService } from "@/infra/database/prisma/prisma.service";
 import { faker } from "@faker-js/faker";
+import { Injectable } from "@nestjs/common";
 
 export function makeAnswerComment(
   override: Partial<AnswerCommentProps> = {},
@@ -18,6 +19,7 @@ export function makeAnswerComment(
   return answer;
 }
 
+@Injectable()
 export class AnswerCommentFactory {
   constructor(private prisma: PrismaService) {}
 

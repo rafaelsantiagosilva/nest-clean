@@ -36,6 +36,8 @@ import { FetchRecentQuestionsController } from "./controllers/questions/fetch-re
 import { GetQuestionBySlugController } from "./controllers/questions/get-question-by-slug.controller";
 import { AuthenticateController } from "./controllers/users/authenticate.controller";
 import { CreateAccountController } from "./controllers/users/create-account.controller";
+import { DeleteAnswerCommentUseCase } from "@/domain/forum/application/usecases/answers/delete-answer-comment";
+import { DeleteAnswerCommentController } from "./controllers/answers/delete-answer-comment.controller";
 
 @Module({
   imports: [
@@ -61,7 +63,8 @@ import { CreateAccountController } from "./controllers/users/create-account.cont
     ChooseQuestionBestAnswerUseCase,
     CommentOnQuestionUseCase,
     DeleteQuestionCommentUseCase,
-    CommentOnAnswerUseCase
+    CommentOnAnswerUseCase,
+    DeleteAnswerCommentUseCase
   ],
   controllers: [
     CreateQuestionController,
@@ -78,7 +81,8 @@ import { CreateAccountController } from "./controllers/users/create-account.cont
     ChooseQuestionBestAnswerController,
     CommentOnQuestionController,
     DeleteQuestionCommentController,
-    CommentOnAnswerController
+    CommentOnAnswerController,
+    DeleteAnswerCommentController
   ],
 
 })
