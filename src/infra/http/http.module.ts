@@ -27,6 +27,8 @@ import { FetchQuestionAnswersController } from "./controllers/answers/fetch-ques
 import { FetchQuestionAnswersUseCase } from "@/domain/forum/application/usecases/answers/fetch-question-answers";
 import { ChooseQuestionBestAnswerUseCase } from "@/domain/forum/application/usecases/questions/choose-question-best-answer";
 import { ChooseQuestionBestAnswerController } from "./controllers/questions/choose-question-best-answer.controller";
+import { CommentOnQuestionUseCase } from "@/domain/forum/application/usecases/questions/comment-on-question";
+import { CommentOnQuestionController } from "./controllers/questions/comment-on-question.controller";
 
 @Module({
   imports: [
@@ -49,7 +51,8 @@ import { ChooseQuestionBestAnswerController } from "./controllers/questions/choo
     EditAnswerUseCase,
     DeleteAnswerUseCase,
     FetchQuestionAnswersUseCase,
-    ChooseQuestionBestAnswerUseCase
+    ChooseQuestionBestAnswerUseCase,
+    CommentOnQuestionUseCase
   ],
   controllers: [
     CreateQuestionController,
@@ -63,7 +66,8 @@ import { ChooseQuestionBestAnswerController } from "./controllers/questions/choo
     EditAnswerController,
     DeleteAnswerController,
     FetchQuestionAnswersController,
-    ChooseQuestionBestAnswerController
+    ChooseQuestionBestAnswerController,
+    CommentOnQuestionController
   ],
 
 })
