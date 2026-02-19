@@ -1,6 +1,6 @@
 import { right, type Either } from "@/core/either";
-import type { QuestionCommentsRepository } from "@/domain/forum/application/repositories/question-comments-repository";
-import type { QuestionComment } from "@/domain/forum/enterprise/entities/question-comment";
+import { QuestionCommentsRepository } from "@/domain/forum/application/repositories/question-comments-repository";
+import { QuestionComment } from "@/domain/forum/enterprise/entities/question-comment";
 import { Injectable } from "@nestjs/common";
 
 type FetchQuestionCommentsUseCaseRequest = {
